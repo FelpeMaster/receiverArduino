@@ -1,0 +1,20 @@
+{
+  "deviceType":
+  {
+    "arduino":{
+      "baudrate":9600
+    },
+    "esp32":{
+      "baudrate":115200
+    }
+  },
+  "deviceSelection":
+  {"device": "arduino",
+    "variables":{
+      "v1": "ratio",
+      "v2": "concentration",
+      "v3": "temperatureInDegrees",
+      "v4": "humidity"
+    }
+  }
+}
