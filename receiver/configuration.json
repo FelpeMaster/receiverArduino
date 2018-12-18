@@ -1,20 +1,29 @@
 {
   "deviceType":
-  {
-    "arduino":{
-      "baudrate":9600
+    {
+        "arduino":{
+          "baudrate":9600
+        },
+        "esp32":{
+          "baudrate":115200
+        }
     },
-    "esp32":{
-      "baudrate":115200
-    }
-  },
-  "deviceSelection":
-  {"device": "arduino",
-    "variables":{
-      "v1": "ratio",
-      "v2": "concentration",
-      "v3": "temperatureInDegrees",
-      "v4": "humidity"
-    }
-  }
+    "deviceSelection":
+      {
+        "device": "arduino",
+        "variables":{
+          "v1": "ratio",
+          "v2": "concentration",
+          "v3": "temperatureInDegrees",
+          "v4": "humidity"
+        },
+        "variableFactors":{
+            "f1":1,
+            "f2":100,
+            "f3":1,
+            "f4":1
+        },
+        "databaseFolder": "/home/frobles/Documentos/receiverArduino/database",
+        "databaseFile": "database.csv"
+      }
 }
