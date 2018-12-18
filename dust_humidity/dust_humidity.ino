@@ -26,25 +26,32 @@ void setup()
 {
   Serial.begin(9600);
   pinMode(8,INPUT);
-  starttime = millis(); 
 }
 
 void pm25DetectFunction(){
-  duration = pulseIn(pin, LOW);
-  lowpulseoccupancy += duration;
-  endtime = millis();
-  if ((endtime-starttime) > sampletime_ms)
-  {
-    ratio = (lowpulseoccupancy-endtime+starttime + sampletime_ms)/(sampletime_ms*10.0);  // Integer percentage 0=>100
-    concentration = 1.1*pow(ratio,3)-3.8*pow(ratio,2)+520*ratio+0.62; // using spec sheet curve
-    lowpulseoccupancy = 0;
+  starttime = millis();
+  endtime = millis(); 
+  ratio = 0;
+  concentration = 0;
+  lowpulseoccupancy = 0;  
+  while ((starttime - endtime) < sampletime_ms){
+    duration = pulseIn(pin, LOW);
+    lowpulseoccupancy += duration;
     starttime = millis();
-  }
+  } 
+  ratio = (lowpulseoccupancy-endtime+starttime + sampletime_ms)/(sampletime_ms*10.0);  // Integer percentage 0=>100
+  concentration = 1.1*pow(ratio,3)-3.8*pow(ratio,2)+520*ratio+0.62; // using spec sheet curve
 }
 
 void readSHT15(){
-  temp_c = sht1x.readTemperatureC();
-  humedad = sht1x.readHumidity();
+  float sum_temp_c = 0;
+  float sum_humedad = 0;
+  for (int j = 0; j<10; j++){
+    sum_temp_c += sht1x.readTemperatureC();
+    sum_humedad += sht1x.readHumidity();  
+  }
+  temp_c = sum_temp_c/10;
+  humedad = sum_humedad/10;
 }
 
 void readSensors(){
@@ -75,6 +82,6 @@ void sendDummieMessege(){
 void loop()
 {
   readSensors();
-  //communicateWithReceiver();
-  sendDummieMessege();
+  communicateWithReceiver();
+  //sendDummieMessege();
 }
