@@ -17,6 +17,10 @@
           "v3": "temperatureInDegrees",
           "v4": "humidity"
         },
+        "variablesDR4000":{
+          "v1" : "concentration",
+          "v2" : "TWA"
+        },
         "variableFactors":{
             "f1":1,
             "f2":100,
@@ -24,6 +28,7 @@
             "f4":1
         },
         "databaseFolder": "/home/frobles/Documentos/receiverArduino/database",
-        "databaseFile": "database.csv"
+        "databaseFile": "database.csv",
+        "databaseFileDR": "dataram.csv"
       }
 }
