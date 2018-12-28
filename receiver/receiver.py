@@ -11,7 +11,7 @@ import numpy as np
 
 class receiver:
     def __init__(self):
-        with open('configuration.json','r') as file:
+        with open('/home/pi/receiverArduino/configuration.json','r') as file:
             self.deviceConf = json.load(file)
         self.connectToDevice()
         self.variablesNumber = len(self.deviceConf['deviceSelection']['variables'])
