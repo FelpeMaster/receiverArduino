@@ -27,7 +27,7 @@
             "f3":1,
             "f4":1
         },
-        "databaseFolder": "/home/frobles/Documentos/receiverArduino/database",
+        "databaseFolder": "/home/pi/Documentos/receiverArduino/database",
         "databaseFile": "database.csv",
         "databaseFileDR": "dataram.csv"
       }
