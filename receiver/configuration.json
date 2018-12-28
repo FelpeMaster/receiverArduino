@@ -27,7 +27,7 @@
             "f3":1,
             "f4":1
         },
-        "databaseFolder": "/home/pi/Documentos/receiverArduino/database",
+        "databaseFolder": "/home/pi/receiverArduino/database",
         "databaseFile": "database.csv",
         "databaseFileDR": "dataram.csv"
       }
