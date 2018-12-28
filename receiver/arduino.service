@@ -1,0 +1,17 @@
+#install at /etc/systemd/systemd
+# to enable service sudo systemd enable dr4000.service
+# to start service sudo systemd start dr4000.service
+
+[unit]
+Description=Get data from arduino: tvoc, eco2, temperature
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+ExecStart=/usr/bin/env python3 /home/pi/receiverArduino/receiver/receiver.py
+Restart=on-failure
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target

@@ -27,7 +27,7 @@ class receiver:
 
     def connectToDevice(self):
         self.baudrate = self.deviceConf['deviceType']['arduino']['baudrate']
-        self.device = self.checkSerialPort()[0]
+        self.device = self.deviceConf['deviceType']['arduino']['device']#self.checkSerialPort()[0]
         self.s = serial.Serial(self.device, self.baudrate)
 
     def createCsvfile(self):
@@ -45,21 +45,23 @@ class receiver:
 
     def processSaveData(self, msg):
         data = self.parsingProcessing(msg)
-        data = [float(i) for i in data]
-        data[0] = int(data[0])
-        csvfile = self.deviceConf['deviceSelection']['databaseFile']
-        print (data)
         if data:
-            with open(csvfile, 'a') as f:
-                writer = csv.writer(f)
-                writer.writerow(data)
+            data = [float(i) for i in data]
+            data[0] = int(data[0])
+            csvfile = self.deviceConf['deviceSelection']['databaseFile']
+            if data:
+                with open(csvfile, 'a') as f:
+                    writer = csv.writer(f)
+                    writer.writerow(data)
 
     def parsingProcessing(self, msg):
-        dataString = msg.split(":")
-        [float(i) for i in dataString]
+        dataString = msg.split(",")
+        d = []
+        for i in range(len(dataString)):
+            d.append(dataString[i].split(" ")[1])
         data = [int(time.time())]
         if self.variablesNumber == len(dataString):
-            return data + dataString
+            return data + d
         else:
             return None
 

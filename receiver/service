@@ -1,3 +1,6 @@
 mv dr4000.service /etc/systemd/system
+mv arduino.service /etc/systemd/system
 sudo systemctl enable dr4000.service
 sudo systemctl start dr4000.service
+sudo systemctl enable arduino.service
+sudo systemctl start arduino.service

@@ -2,7 +2,8 @@
   "deviceType":
     {
         "arduino":{
-          "baudrate":9600
+          "baudrate":9600,
+          "device": "/dev/serial/by-id/usb-1a86_USB2.0-Serial-if00-port0"
         },
         "esp32":{
           "baudrate":115200
@@ -12,10 +13,9 @@
       {
         "device": "arduino",
         "variables":{
-          "v1": "ratio",
-          "v2": "concentration",
-          "v3": "temperatureInDegrees",
-          "v4": "humidity"
+          "v1": "co2",
+          "v2": "tvoc",
+          "v3": "temperatureInDegrees"
         },
         "variablesDR4000":{
           "v1" : "concentration",
