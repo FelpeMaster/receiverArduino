@@ -8,7 +8,7 @@ import csv
 
 class dr4000:
     def __init__(self):
-        with open('configuration.json','r') as file:
+        with open('/home/pi/Documentos/receiverArduino/receiver/configuration.json','r') as file:
             self.deviceConf = json.load(file)
         self.device = '/dev/serial/by-id/usb-Prolific_Technology_Inc._USB-Serial_Controller_D-if00-port0'
         self.baudrate = 38400
