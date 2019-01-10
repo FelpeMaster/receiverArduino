@@ -48,9 +48,8 @@ class dr4000:
         csvfile = self.deviceConf['deviceSelection']['databaseFileDR']
         if not os.path.isfile(csvfile):
             variables = self.deviceConf['deviceSelection']['variablesDR4000']
-            arrayOfVariableNames = ['time']
-            for v, value in variables.items():
-                arrayOfVariableNames.append(value)
+            arrayOfVariableNames = ['time', 'concentation', 'twa']
+
             with open(csvfile, 'w') as csvfile:
                 writer = csv.DictWriter(csvfile, fieldnames=arrayOfVariableNames)
                 writer.writeheader()
